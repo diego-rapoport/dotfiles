@@ -1,13 +1,3 @@
-#
-#██████╗ ██╗███╗   ██╗██╗  ██╗███████╗ ██████╗  ██████╗
-#██╔══██╗██║████╗  ██║██║  ██║██╔════╝██╔════╝ ██╔═══██╗
-#██║  ██║██║██╔██╗ ██║███████║█████╗  ██║  ███╗██║   ██║
-#██║  ██║██║██║╚██╗██║██╔══██║██╔══╝  ██║   ██║██║   ██║
-#██████╔╝██║██║ ╚████║██║  ██║███████╗╚██████╔╝╚██████╔╝
-#╚═════╝ ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝ ╚═════╝  ╚═════╝
-#
-
-
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget, hook, qtile
@@ -19,7 +9,7 @@ import sh, subprocess, time, os, random
 
 from PegaPaleta import wpp, bg, borda, scrativa, scrinativa, fginativo
 
-mod = "mod4"
+mod = 'mod4'
 ctrl = 'control'
 alt = 'mod1'
 shift = 'shift'
@@ -27,35 +17,35 @@ terminal = guess_terminal() # default qtile
 
 keys = [
 
-    # MOVIMENTO DAS TELAS
+    	# MOVIMENTO DAS TELAS
     Key([alt], 'h', lazy.spawn('qtile-cmd -o cmd -f next_screen')),
     Key([alt], 'l', lazy.spawn('qtile-cmd -o cmd -f previous_screen')),
 
 	# FOCUS DA JANELA
-    Key([mod], "j", lazy.layout.down(), desc='Foco na janela de baixo'),
-    Key([mod], "k", lazy.layout.up(), desc='Foco na janela de cima'),
+    Key([mod], 'j', lazy.layout.down(), desc='Foco na janela de baixo'),
+    Key([mod], 'k', lazy.layout.up(), desc='Foco na janela de cima'),
     Key([mod], 'h', lazy.layout.left(), desc='Foco na janela da esquerda'),
     Key([mod], 'l', lazy.layout.right(), desc='Foco na janela da direita'),
-	Key([mod], "space", lazy.layout.next(), desc='Foco na próxima janela'),
+    Key([mod], "space", lazy.layout.next(), desc='Foco na próxima janela'),
 
 	# MOVIMENTO DA JANELA FOCADA
-    Key([mod, shift], "j", lazy.layout.shuffle_down(), desc='Move a janela pra baixo'),
-    Key([mod, shift], "k", lazy.layout.shuffle_up(), desc='Move a janela pra cima'),
+    Key([mod, shift], 'j', lazy.layout.shuffle_down(), desc='Move a janela pra baixo'),
+    Key([mod, shift], 'k', lazy.layout.shuffle_up(), desc='Move a janela pra cima'),
     Key([mod, shift], 'h', lazy.layout.swap_left(), desc='Move a janela pra esquerda'),
-    Key([mod, shift], 'l', lazy.layout.swap_right(), desc='Move a janela pra direita'),
-	Key([mod, shift], "space", lazy.layout.rotate(), desc='Move a janela para a próxima na sequência'),
+    Key([mod, shift], 'l', lazy.layout.swap_right(), desc='Move a janela pra direita'), 
+    Key([mod, shift], 'space', lazy.layout.rotate(), desc='Move a janela para a próxima na sequência'),
 
 	# TAMANHO DA JANELA
-	Key([mod], 'equal', lazy.layout.grow(), desc='Aumenta o tamanho da janela'),
+    Key([mod], 'equal', lazy.layout.grow(), desc='Aumenta o tamanho da janela'),
     Key([mod], 'minus', lazy.layout.shrink(), desc='Diminui o tamanho da janela'),
     Key([mod, shift], "Return", lazy.layout.toggle_split(), desc='Muda entre janelas separadas ou maximizadas'),
 
 	# QTILE GERAL
-    Key([mod], "Tab", lazy.next_layout(), desc='Troca tipo de layout'),
-    Key([mod, ctrl], "w", lazy.window.kill(), desc='Fecha a janela focada'),
-    Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc='Fecha o Qtile'),
-    Key([mod], "r", lazy.spawncmd(), desc='Abre o widget Prompt pra executar comando'),
+    Key([mod], 'Tab', lazy.next_layout(), desc='Troca tipo de layout'),
+    Key([mod, ctrl], 'w', lazy.window.kill(), desc='Fecha a janela focada'),
+    Key([mod, 'control'], 'r', lazy.restart(), desc='Restart qtile'),
+    Key([mod, "control"], 'q', lazy.shutdown(), desc='Sai do Qtile'),
+    Key([mod], 'r', lazy.spawncmd(), desc='Abre o widget Prompt pra executar comando'),
 
 	# TECLAS DE AUDIO
     Key([], 'XF86AudioPlay', lazy.spawn('playerctl play-pause'), desc='Play ou Pause'),
@@ -66,8 +56,8 @@ keys = [
     Key([], 'XF86AudioMute', lazy.spawn('pulsemixer --toggle-mute'), desc='Muta/Desmuta o volume'),
 
 	# PROGRAMAS
-	Key([mod], "Return", lazy.spawn(terminal), desc='Abre o terminal'),
-	Key([mod], 'e', lazy.spawn('io.elementary.files'), desc='Abre a pasta de arquivos'),
+    Key([mod], "Return", lazy.spawn(terminal), desc='Abre o terminal'),
+    Key([mod], 'e', lazy.spawn('io.elementary.files'), desc='Abre a pasta de arquivos'),
     Key([mod], 'f', lazy.spawn('firefox'), desc='Abre o Firefox'),
     Key([mod], 'g', lazy.spawn('google-chrome-stable'), desc='Abre o Google Chrome'),
     Key([mod], 't', lazy.spawn('telegram-desktop'), desc='Abre o Telegram'),
@@ -189,7 +179,7 @@ screens = [
     ),
 ]
 
-# Drag floating layouts.
+# Janelas flutuantes
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
@@ -231,8 +221,8 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def autostart():
-	sh.xrandr('--output', 'HDMI-1', '--primary', '--right-of', 'eDP-1')
+    sh.xrandr('--output', 'HDMI-1', '--primary', '--right-of', 'eDP-1')
 
 @hook.subscribe.startup_complete
 def completado():
-	sh.autostart()
+    sh.autostart()
