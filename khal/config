@@ -1,0 +1,26 @@
+[calendars]
+[[dinhego]]
+path = ~/.calendarios/dinhego
+color = brown
+
+[[diegomrapoport]]
+path = ~/.calendarios/diegomrapoport/diegomrapoport@gmail.com
+color = light magenta
+
+[locale]
+timeformat = %H:%M
+dateformat = %d/%m
+longdateformat = %d/%m/%Y
+datetimeformat = %d/%m %H:%M
+longdatetimeformat = %d/%m/%Y %H:%M
+firstweekday = 6
+
+[view]
+event_view_always_visible = True
+monthdisplay = firstfullweek
+frame = width
+
+[default]
+default_calendar = diegomrapoport
+highlight_event_days = True
+timedelta = 7d

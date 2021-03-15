@@ -1,0 +1,7 @@
+# opções básicas
+use_nerdfont = true
+notify = true
+
+[keybindings]
+"m" = "voldown 100"
+"M" = "volup 100"

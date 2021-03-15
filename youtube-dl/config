@@ -1,0 +1,17 @@
+# Salva na pasta vídeos
+-o ~/Videos/%(title)s-%(id)s.%(ext)s
+
+--fixup fix
+
+--youtube-skip-dash-manifest
+
+--prefer-free-formats
+
+--no-continue
+
+--buffer-size 6000
+
+--retries 30
+--fragment-retries infinite
+
+--limit-rate 100K

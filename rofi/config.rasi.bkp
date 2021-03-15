@@ -1,0 +1,10 @@
+/** Configured For Applets **/
+
+configuration {
+  show-icons:         true;
+  icon-theme:         "Arc";
+  location: 6;
+  yoffset: -30;
+  xoffset: -20;
+}
+@import "/home/dinhego/.config/rofi/themes/fancy.rasi"

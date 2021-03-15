@@ -1,0 +1,10 @@
+auto-reload yes
+
+browser "qutebrowser %u"
+
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+bind-key g home
+bind-key G end
